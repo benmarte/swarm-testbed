@@ -12,6 +12,16 @@ on:
     - cron: "0 2 * * *"
   workflow_dispatch: {}
 
+# Callers must grant at least what the reusable workflows' jobs request —
+# repos with restricted default token permissions (the GitHub default for new
+# repos) otherwise fail at startup with "requesting X, but is only allowed none".
+permissions:
+  contents: write        # develop/fix push branches; others read
+  pull-requests: write   # develop opens PRs; pr-gates posts reviews
+  issues: write          # transitions, comments, labels on every stage
+  actions: read          # fix.yml reads failed run context
+  checks: read           # gate status reads
+
 jobs:
   # ── intake / spec / develop ────────────────────────────────────────────────
   # Issue number comes directly from the label event — no extraction needed.
