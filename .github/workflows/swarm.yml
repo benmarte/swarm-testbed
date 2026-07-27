@@ -21,7 +21,7 @@ jobs:
       github.event_name == 'issues' &&
       github.event.action == 'labeled' &&
       github.event.label.name == 'swarm:go'
-    uses: benmarte/swarm/.github/workflows/swarm-intake.yml@v1
+    uses: benmarte/swarm/.github/workflows/intake.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
     secrets: inherit
@@ -31,7 +31,7 @@ jobs:
       github.event_name == 'issues' &&
       github.event.action == 'labeled' &&
       github.event.label.name == 'swarm:spec'
-    uses: benmarte/swarm/.github/workflows/swarm-spec.yml@v1
+    uses: benmarte/swarm/.github/workflows/spec.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
     secrets: inherit
@@ -41,7 +41,7 @@ jobs:
       github.event_name == 'issues' &&
       github.event.action == 'labeled' &&
       github.event.label.name == 'swarm:develop'
-    uses: benmarte/swarm/.github/workflows/swarm-develop.yml@v1
+    uses: benmarte/swarm/.github/workflows/develop.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
       adapter: claude-code-action
@@ -73,7 +73,7 @@ jobs:
 
   pr-gates:
     needs: extract-for-gates
-    uses: benmarte/swarm/.github/workflows/swarm-pr-gates.yml@v1
+    uses: benmarte/swarm/.github/workflows/pr-gates.yml@v1
     with:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-gates.outputs.issue) }}
@@ -107,7 +107,7 @@ jobs:
 
   fix:
     needs: extract-for-fix
-    uses: benmarte/swarm/.github/workflows/swarm-fix.yml@v1
+    uses: benmarte/swarm/.github/workflows/fix.yml@v1
     with:
       pr: ${{ fromJSON(needs.extract-for-fix.outputs.pr) }}
       issue: ${{ fromJSON(needs.extract-for-fix.outputs.issue) }}
@@ -140,7 +140,7 @@ jobs:
 
   docs:
     needs: extract-for-docs
-    uses: benmarte/swarm/.github/workflows/swarm-docs.yml@v1
+    uses: benmarte/swarm/.github/workflows/docs.yml@v1
     with:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-docs.outputs.issue) }}
@@ -152,7 +152,7 @@ jobs:
 
   sweeper:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    uses: benmarte/swarm/.github/workflows/swarm-sweeper.yml@v1
+    uses: benmarte/swarm/.github/workflows/sweeper.yml@v1
     with:
       stall-threshold-hours: 48
     secrets: inherit
