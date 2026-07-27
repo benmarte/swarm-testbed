@@ -24,6 +24,8 @@ jobs:
     uses: benmarte/swarm/.github/workflows/intake.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
+      adapter: openai-compat
+      model: qwen3.6-27b-ud-q4_k_xl
     secrets: inherit
 
   spec:
@@ -34,6 +36,8 @@ jobs:
     uses: benmarte/swarm/.github/workflows/spec.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
+      adapter: openai-compat
+      model: qwen3.6-27b-ud-q4_k_xl
     secrets: inherit
 
   develop:
@@ -44,7 +48,9 @@ jobs:
     uses: benmarte/swarm/.github/workflows/develop.yml@v1
     with:
       issue: ${{ github.event.issue.number }}
-      adapter: claude-code-action
+      adapter: headless
+      adapter-cmd: claude -p
+      model: claude-max-cli
       maintainer: benmarte
     secrets: inherit
 
@@ -77,6 +83,8 @@ jobs:
     with:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-gates.outputs.issue) }}
+      adapter: openai-compat
+      model: qwen3.6-27b-ud-q4_k_xl
     secrets: inherit
 
   # ── fix ────────────────────────────────────────────────────────────────────
@@ -112,7 +120,9 @@ jobs:
       pr: ${{ fromJSON(needs.extract-for-fix.outputs.pr) }}
       issue: ${{ fromJSON(needs.extract-for-fix.outputs.issue) }}
       maintainer: benmarte
-      adapter: claude-code-action
+      adapter: headless
+      adapter-cmd: claude -p
+      model: claude-max-cli
     secrets: inherit
 
   # ── docs ───────────────────────────────────────────────────────────────────
@@ -144,6 +154,8 @@ jobs:
     with:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-docs.outputs.issue) }}
+      adapter: openai-compat
+      model: qwen3.6-27b-ud-q4_k_xl
     secrets: inherit
 
   # ── sweeper ────────────────────────────────────────────────────────────────
@@ -155,4 +167,6 @@ jobs:
     uses: benmarte/swarm/.github/workflows/sweeper.yml@v1
     with:
       stall-threshold-hours: 48
+      adapter: openai-compat
+      model: qwen3.6-27b-ud-q4_k_xl
     secrets: inherit

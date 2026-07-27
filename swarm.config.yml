@@ -1,9 +1,9 @@
 develop:
-  adapter: claude-code-action
+  adapter: headless
 
-# SWARM_LLM_BASE_URL: "http://localhost:9000/v1"
-# Uncomment the line above (and set SWARM_LLM_MODEL=qwen3.6-27b-ud-q4_k_xl as a GitHub Secret
-# or runner env var) when run 3 flips decision roles to the openai-compat adapter.
+# Base URL for the local openai-compat endpoint used by decision roles.
+# run 3: qwen3.6-27b-ud-q4_k_xl served at http://localhost:9000/v1
+SWARM_LLM_BASE_URL: "http://localhost:9000/v1"
 
 qa:
   required_checks:
