@@ -1,0 +1,16 @@
+develop:
+  adapter: claude-code-action
+
+# SWARM_LLM_BASE_URL: "http://localhost:9000/v1"
+# Uncomment the line above (and set SWARM_LLM_MODEL=qwen3.6-27b-ud-q4_k_xl as a GitHub Secret
+# or runner env var) when run 3 flips decision roles to the openai-compat adapter.
+
+qa:
+  required_checks:
+    - ci
+
+runner:
+  label: swarm-agent
+
+sweeper:
+  schedule: "0 2 * * *"
