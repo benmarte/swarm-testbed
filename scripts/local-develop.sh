@@ -5,7 +5,7 @@
 # working tree, exit 0. The swarm engine owns all git/GitHub operations; this
 # script must never touch git.
 #
-# Model: qwen3.6-27b served at http://localhost:9000/v1 (llama.cpp, OpenAI-compatible)
+# Model: deepseek-v4-flash served at http://localhost:9000/v1 (llama.cpp, OpenAI-compatible)
 # Harness: qwen-code CLI (non-interactive, auto-approve edits)
 set -euo pipefail
 
@@ -14,7 +14,7 @@ prompt_file="${1:?usage: local-develop.sh <prompt-file>}"
 
 export OPENAI_BASE_URL="${SWARM_LLM_BASE_URL:-http://localhost:9000/v1}"
 export OPENAI_API_KEY="${SWARM_LLM_API_KEY:-local}"
-export OPENAI_MODEL="${SWARM_LLM_MODEL:-qwen3.6-27b-ud-q4_k_xl}"
+export OPENAI_MODEL="${SWARM_LLM_MODEL:-deepseek-v4-flash}"
 
 command -v qwen >/dev/null 2>&1 || {
   printf 'local-develop: qwen CLI not found on PATH (npm i -g @qwen-code/qwen-code)\n' >&2

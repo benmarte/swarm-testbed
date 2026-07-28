@@ -8,7 +8,7 @@ develop:
   adapter: headless
 
 # Base URL for the local openai-compat endpoint used by decision roles.
-# run 3: qwen3.6-27b-ud-q4_k_xl served at http://localhost:9000/v1
+# run 3: deepseek-v4-flash served at http://localhost:9000/v1
 SWARM_LLM_BASE_URL: "http://localhost:9000/v1"
 
 qa:

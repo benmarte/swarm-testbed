@@ -35,7 +35,7 @@ jobs:
     with:
       issue: ${{ github.event.issue.number }}
       adapter: openai-compat
-      model: qwen3.6-27b-ud-q4_k_xl
+      model: deepseek-v4-flash
     secrets: inherit
 
   spec:
@@ -47,7 +47,7 @@ jobs:
     with:
       issue: ${{ github.event.issue.number }}
       adapter: openai-compat
-      model: qwen3.6-27b-ud-q4_k_xl
+      model: deepseek-v4-flash
     secrets: inherit
 
   develop:
@@ -94,7 +94,7 @@ jobs:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-gates.outputs.issue) }}
       adapter: openai-compat
-      model: qwen3.6-27b-ud-q4_k_xl
+      model: deepseek-v4-flash
     secrets: inherit
 
   # ── fix ────────────────────────────────────────────────────────────────────
@@ -165,7 +165,7 @@ jobs:
       pr: ${{ github.event.number }}
       issue: ${{ fromJSON(needs.extract-for-docs.outputs.issue) }}
       adapter: openai-compat
-      model: qwen3.6-27b-ud-q4_k_xl
+      model: deepseek-v4-flash
     secrets: inherit
 
   # ── sweeper ────────────────────────────────────────────────────────────────
@@ -178,5 +178,5 @@ jobs:
     with:
       stall-threshold-hours: 48
       adapter: openai-compat
-      model: qwen3.6-27b-ud-q4_k_xl
+      model: deepseek-v4-flash
     secrets: inherit
