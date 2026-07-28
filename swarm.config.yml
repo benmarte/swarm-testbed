@@ -1,8 +1,10 @@
 notify:
   # Buzz (Nostr/NIP-29) — relay URL + bot key are secrets; the channel UUID is behavior.
   buzz_channel: "275b679c-545b-4445-b228-536cf19159cb"
-  # Slack — webhook URL is a secret (SWARM_SLACK_WEBHOOK); enable once seeded.
-  # slack: true
+  # Slack — bot-token mode: SWARM_SLACK_BOT_TOKEN secret + channel ID below.
+  slack_channel: "C0B3P2Q39LN"
+  # Discord — bot-token mode: SWARM_DISCORD_BOT_TOKEN secret + channel ID below.
+  discord_channel: "1512810543172554877"
 
 develop:
   adapter: headless
