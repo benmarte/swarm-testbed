@@ -59,8 +59,10 @@ jobs:
     with:
       issue: ${{ github.event.issue.number }}
       adapter: headless
-      adapter-cmd: claude -p
-      model: claude-max-cli
+      # Run 3 — fully local: no delegation to a hosted model. Drives the
+      # local endpoint via scripts/local-develop.sh (qwen CLI -> deepseek).
+      adapter-cmd: bash scripts/local-develop.sh
+      model: deepseek-v4-flash
       maintainer: benmarte
     secrets: inherit
 
@@ -131,8 +133,9 @@ jobs:
       issue: ${{ fromJSON(needs.extract-for-fix.outputs.issue) }}
       maintainer: benmarte
       adapter: headless
-      adapter-cmd: claude -p
-      model: claude-max-cli
+      # Run 3 — fully local, same harness as the develop stage.
+      adapter-cmd: bash scripts/local-develop.sh
+      model: deepseek-v4-flash
     secrets: inherit
 
   # ── docs ───────────────────────────────────────────────────────────────────
