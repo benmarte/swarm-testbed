@@ -35,3 +35,21 @@
   [ "$status" -eq 0 ]
   [ "$output" = "12" ]
 }
+
+@test "mod: 17 % 5 = 2" {
+  run bash calc.sh mod 17 5
+  [ "$status" -eq 0 ]
+  [ "$output" = "2" ]
+}
+
+@test "mod: 9 % 3 = 0" {
+  run bash calc.sh mod 9 3
+  [ "$status" -eq 0 ]
+  [ "$output" = "0" ]
+}
+
+@test "mod: division by zero yields error" {
+  run bash calc.sh mod 5 0
+  [ "$status" -ne 0 ]
+  [[ "$output" == *"Error: division by zero"* ]]
+}
